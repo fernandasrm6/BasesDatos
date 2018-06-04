@@ -1,0 +1,38 @@
+a)
+select
+{ Measures.[Sales Amount],
+Measures.[Order Quantity] } on columns,
+filter(([Time By Day].[Trimestre].&[Q1],[Time By Day].[Trimestre].&[Q4], [Dim Sales Territory].[Region] = 'Pacific'))  on rows
+from [Adventure Works DW]
+where [Dim Product].[Product Line].M
+
+b)
+
+
+SELECT
+{[Dim Employee].[Full-Name]} ON COLUMNS,
+{[Dim Time].[Trimestre]} ON ROWS
+FROM [Adventure Works DW]
+WHERE [Dim Time].[Año].[2015]
+c)
+SELECT
+{[Measures].[Total Product Cost]} ON COLUMNS,
+{[Dim Product].[Product Line]} ON ROWS
+FROM [Adventure Works DW]
+WHERE Pais.Canada
+
+d)
+
+
+SELECT
+{[Measures].[Unit Price]} ON COLUMNS,
+filter (([Dim Sales Territory].[Pais].members, [Dim Sales Territory].[Region].members, [Measures].[Unit Price]>3500000)) ON ROWS
+FROM [Adventure Works DW]
+e)
+
+
+SELECT
+{[Measures].[Sales Amount],[Measures].[Order Quantity]} ON COLUMNS,
+{[Dim Product].[Product Line], [Dim Reseller].[ciudad]} ON ROWS
+FROM [Adventure Works DW]
+WHERE Año.2016, Año.2017
